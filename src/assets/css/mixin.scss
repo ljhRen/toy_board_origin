@@ -1,0 +1,58 @@
+/* *********************
+* date: 2023.03.30
+* author: ren
+* description: SCSS Mixin File
+* => W.I.P
+********************* */
+
+@mixin bgImgSet($url, $repeat: null, $position: null, $size: null) {
+  background: {
+    image: url('#{$url}');
+    repeat: $repeat;
+    position: $position;
+    size: $size;
+  }
+  @if $repeat == null {
+    background-repeat: no-repeat;
+  }
+  @if $position == null {
+    background-position: center;
+  }
+  @if $size == null {
+    background-size: cover;
+  }
+}
+
+@mixin clear($direction) {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  > * {
+    float: $direction;
+    &.slash {
+      @if $direction == right {
+        &:first-child {
+          padding-right: 0;
+          &:after {
+            display: none;
+          }
+        }
+      } @else {
+        &:last-child {
+          padding-right: 0;
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin textEllipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
